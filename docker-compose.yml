@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  database:
+    image: mysql:5.7
+    ports:
+      - 3307:3307
+    environment:
+      - MYSQL_DATABASE=scripts_dev
+      - MYSQL_USER=scripts_dev
+      - MYSQL_PASSWORD=scripts_password_dev
+      - MYSQL_ROOT_PASSWORD=scripts_password_dev
+      - MYSQL_TCP_PORT=3307
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata: {}
